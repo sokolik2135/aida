@@ -1,4 +1,6 @@
-﻿.suchar::after {
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin-ext');
+
+.suchar::after {
     content: ' 🍞';
 }
 
@@ -29,8 +31,6 @@
 .buggy::after {
     content: ' 😂';
 }
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin-ext');
 
 @keyframes rotating {
     from { transform: rotate(0deg); }

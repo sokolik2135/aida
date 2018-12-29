@@ -31,8 +31,8 @@
 <body>
 <?php
     $useragent = $_SERVER['HTTP_USER_AGENT'];
-    if (preg_match('-app/i',$useragent)) {
-        header('Location: https://piotrsokolowski.tk/?online');
+    if (preg_match('/asystent-app/i',$useragent)) {
+        header('Location: /?online');
     }
     if (isset($_GET['online'])) {
         ?>

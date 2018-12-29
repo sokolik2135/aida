@@ -472,7 +472,7 @@ function checkName() {
         if (localStorage['aida-name'] == 'Towarzyszu') {
             updateChat('assistant',`Witajcie ${localStorage['aida-name']}! Dobrze, że wróciliście!`)
         } else {
-            updateChat('assistant',`Cześć ${localStorage['aida-name']}! Miło, że wróciłeś!`);
+            updateChat('assistant',`Cześć ${localStorage['aida-name']}! Miło, że wrócił${end}!`);
         }
     }
 };
