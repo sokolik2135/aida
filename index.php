@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aida - Your personal assistant!</title>
     <style>
-        @font-face {
-            font-family: 'Open Sans';
-            src: url('fonts/OpenSans-Light.ttf') format('truetype');
-        }
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin-ext');
         html,
         body,
         #languages {
@@ -81,6 +78,14 @@
             }
         }
     </style>
+    
+    <!-- Android -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png">
+    <!-- iOS -->
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="apple-touch-startup-image" href="favicon.png">
 </head>
 <body>
     <div id="header"></div>
