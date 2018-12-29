@@ -1,0 +1,321 @@
+﻿.suchar::after {
+    content: ' 🍞';
+}
+
+.sad::after {
+    content: ' 😞';
+}
+
+.proud::after {
+    content: ' 😊';
+}
+
+.duck::after {
+    content: ' 🦆';
+}
+
+.fox::after {
+    content: ' 🦊';
+}
+
+.laugh::after {
+    content: ' 😂';
+}
+
+.kiss::after {
+    content: ' 😘';
+}
+
+.buggy::after {
+    content: ' 😂';
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+}
+
+@keyframes rotating {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes splash {
+    0% {
+        bottom: 45%;
+        opacity: 0;
+        height: 100%;
+        z-index: 20;
+    }
+    30% {
+        bottom: 45%;
+        opacity: 1;
+        height: 100%;
+        z-index: 20;
+    }
+    50% {
+        color: #000000;
+        bottom: 100px;
+    }
+    75% {
+        color: #FFFFFF;
+        bottom: 100px;
+        opacity: 1;
+    }
+    99% {
+        color: #FFFFFF;
+        bottom: 100px;
+        opacity: 0;
+        height: 100%;
+        z-index: 20;
+    }
+    100% {
+        color: #FFFFFF;
+        bottom: 100px;
+        opacity: 0;
+        height: 100%;
+        z-index: -10;
+    }
+}
+
+@keyframes bg {
+    0% { z-index: 19; }
+    75% {
+        opacity: 1;
+    }
+    99% {
+        z-index: 19;
+        opacity: 0;
+    }
+    100% { z-index: -1; }
+}
+
+html,
+body,
+#conversation {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    z-index: 0;
+    background: white;
+    font-family: 'Open Sans';
+}
+
+h1 {
+    font-size: 100px;
+}
+
+.animate {
+    position: absolute;
+    height: 100px;
+    width: initial;
+    z-index: 9;
+}
+
+#k1,
+#sp_k1 {
+    animation: rotating 4s linear infinite;
+}
+
+#k2,
+#sp_k2 {
+    animation: rotating 6s linear infinite reverse;
+}
+
+#k3,
+#sp_k3 {
+    animation: rotating 2s linear infinite;
+}
+
+#bg {
+    position: fixed;
+    background: white;
+    width: 100%;
+    height: 100%;
+    animation: bg 5s ease;
+}
+
+#sp_icon,
+#icon {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#sp_icon {
+    margin: 0;
+}
+
+#title {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+#sp {
+    background: white;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: splash 5s ease;
+}
+
+#sp > div {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: initial;
+    z-index: 5;
+}
+
+a[title*="Hosted on free web hosting 000webhost.com. Host your own website for FREE."] {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+code {
+    background: #f0f0f0;
+    outline: #f0f0f0 auto 1px;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: grey;
+}
+
+/* scrollbar - end */
+
+#clientInput,
+#newInfo,
+#name {
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ddd;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+#clientInput:focus,
+#newInfo:focus,
+#name:focus {
+    outline: 0;
+}
+
+#newInfo,
+#name {
+    z-index: 999;
+}
+
+#send {
+    background: white url('../res/send.png') no-repeat -3px 0;
+    background-size: 24px 24px;
+    background-position: center;
+    z-index: 9;
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    bottom: 0;
+    right: 0;
+    box-sizing: border-box;
+    border: 0;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
+}
+
+#messages {
+    position: absolute;
+    bottom: 0;
+    padding: 0 5px;
+    width: calc(100% - 10px);
+    display: block;
+    height: auto;
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+#messages > .message {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 5px 0;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+#messages > .message:last-of-type {
+    margin-bottom: 45px;
+}
+
+#messages > .message.client {
+    justify-content: flex-end;
+}
+
+#messages > .message > span {
+    border-radius: 24px;
+    min-height: 24px;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    max-width: 80%;
+}
+
+#messages > .message > .client {
+    background: #0091fe;
+    border: 1px solid #0091fe;
+    color: white;
+}
+
+#messages > .message > .assistant {
+    background: #fafafa;
+    border: 1px solid #ddd;
+}
+
+.thinking img,
+img.dots {
+    height: 1em;
+    width: initial;
+}
+
+a.search::before {
+    content: '';
+    background: transparent url('../res/g.png');
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    background-size: 1em 1em;
+    display: inline-block;
+    vertical-align: middle; 
+}
