@@ -10,7 +10,7 @@
 
     <title>Aida - Changelog</title>
 
-    <link rel="stylesheet" href="/asystent/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- Android -->
     <link rel="manifest" href="manifest.json">

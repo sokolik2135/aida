@@ -14,16 +14,16 @@
     
     <?php
         if (isset($_GET['online'])) {
-            echo '<link rel="stylesheet" href="/asystent/css/style.css">';
+            echo '<link rel="stylesheet" href="/css/style.css">';
         } else {
-            echo '<link rel="stylesheet" href="/asystent/css/main.css">';
+            echo '<link rel="stylesheet" href="/css/main.css">';
         }
     ?>
     
     <!-- Android -->
-    <link rel="manifest" href="/asystent/manifest.json">
-    <link rel="shortcut icon" href="/asystent/favicon.png" type="image/png">
-    <link rel="icon" href="/asystent/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png">
     <!-- iOS -->
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="apple-touch-startup-image" href="favicon.png">
@@ -31,8 +31,8 @@
 <body>
 <?php
     $useragent = $_SERVER['HTTP_USER_AGENT'];
-    if (preg_match('/asystent-app/i',$useragent)) {
-        header('Location: https://piotrsokolowski.tk/asystent/?online');
+    if (preg_match('-app/i',$useragent)) {
+        header('Location: https://piotrsokolowski.tk/?online');
     }
     if (isset($_GET['online'])) {
         ?>
@@ -43,19 +43,19 @@
                 <h1>Aida</h1>
             </div>
             <div id="sp_icon">
-                <img class="animate" id="sp_k1" src="/asystent/res/szablon1.png">
-                <img class="animate" id="sp_k2" src="/asystent/res/szablon2.png">
-                <img class="animate" id="sp_k3" src="/asystent/res/szablon3.png">
+                <img class="animate" id="sp_k1" src="/res/szablon1.png">
+                <img class="animate" id="sp_k2" src="/res/szablon2.png">
+                <img class="animate" id="sp_k3" src="/res/szablon3.png">
             </div>
         </div>
     </div>
-    <img id="top" src="/asystent/res/top.png">
+    <img id="top" src="/res/top.png">
     <div id="conversation">
         <div id="messages">
             <div id="icon">
-                <img class="animate" id="k1" src="/asystent/res/szablon1.png">
-                <img class="animate" id="k2" src="/asystent/res/szablon2.png">
-                <img class="animate" id="k3" src="/asystent/res/szablon3.png">
+                <img class="animate" id="k1" src="/res/szablon1.png">
+                <img class="animate" id="k2" src="/res/szablon2.png">
+                <img class="animate" id="k3" src="/res/szablon3.png">
             </div>
         </div>
         <input type="text" name="clientInput" id="clientInput" autofocus>
@@ -63,13 +63,13 @@
         <input type="text" name="name" id="name">
         <div id="send" onclick="sendData()"></div>
     </div>
-    <script src="/asystent/js/responsivevoice.js"></script>
-    <script src="/asystent/js/jquery.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/info.js"></script>
-    <script src="/asystent/js/script.js"></script>
+    <script src="/js/script.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/data.js"></script>
-    <!-- <script src="/asystent/sw.js"></script> -->
+    
     <?php
     } else {
         include 'navbar.php';
@@ -112,14 +112,14 @@
     </footer>
     <script>
         $.ajax({
-            url: '/asystent/dev/licznik.txt',
+            url: '/dev/licznik.txt',
             success: function(r){
                 $('#devices').text(r);
             }
         });
 
         $.ajax({
-            url: '/asystent/lang.php',
+            url: '/lang.php',
             success: function(r){
                 var tmp = r.replace('en','angielski').replace('pl','polski').replace('de','niemiecki').replace('fr','francuski').replace('it','włoski');
                 var lang = tmp.split(',');
@@ -131,7 +131,7 @@
             }
         });
     </script>
-    <!-- <script src="/asystent/sw.js"></script> -->
+    
     <?php
         }
     ?>

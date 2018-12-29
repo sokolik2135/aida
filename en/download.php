@@ -6,8 +6,8 @@
     } elseif (preg_match('/win/i',$useragent)) {
         $detect = 'Windows';
         $sprzet = 'computer';
-        $link32 = 'https://github.com/sokolik2135/aida/releases/download/v1.0/asystent_x32.exe';
-        $link64 = 'https://github.com/sokolik2135/aida/releases/download/v1.0/asystent_x64.exe';
+        $link32 = 'https://github.com/sokolik2135/aida/releases/download/v1.0_x32.exe';
+        $link64 = 'https://github.com/sokolik2135/aida/releases/download/v1.0_x64.exe';
     } elseif (preg_match('/Android/i',$useragent)) {
         $detect = 'Android';
         $sprzet = 'phone';
@@ -23,12 +23,12 @@
     } elseif (preg_match('/linux/i',$useragent)) {
         $detect = 'Linux (Debian)';
         $sprzet = 'computer';
-        $link32 = 'https://github.com/sokolik2135/aida/releases/download/v1.0/asystent_i386.deb';
-        $link64 = 'https://github.com/sokolik2135/aida/releases/download/v1.0/asystent_amd64.deb';
+        $link32 = 'https://github.com/sokolik2135/aida/releases/download/v1.0_i386.deb';
+        $link64 = 'https://github.com/sokolik2135/aida/releases/download/v1.0_amd64.deb';
     } elseif (preg_match('/mac/i',$useragent)) {
         $detect = 'macOS';
         $sprzet = 'computer';
-        $link = 'https://github.com/sokolik2135/aida/releases/download/v1.0/asystent_macOS_x64.zip';
+        $link = 'https://github.com/sokolik2135/aida/releases/download/v1.0_macOS_x64.zip';
     }
     echo '
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
 
     <title>Aida - Pobierz</title>
 
-    <link rel="stylesheet" href="/asystent/css/download.css">
+    <link rel="stylesheet" href="/css/download.css">
 
     <!-- Android -->
     <link rel="manifest" href="manifest.json">

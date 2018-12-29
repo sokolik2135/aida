@@ -41,7 +41,7 @@ function interact(input) {
         if (input == 'aida://author') return 'Piotr Sokołowski';
         if (input == 'aida://beta') {
             setTimeout(function(){
-                location.href = '/asystent_beta';
+                location.href = '_beta';
             }, 1500);
             return 'I\'m going to the beta version';
         };
@@ -421,7 +421,7 @@ function sendData() {
     $('#clientInput').val('');
     updateChat('assistant','');
     $('#messages span.assistant:last').addClass('thinking');
-    $('.thinking').html('<img class="dots" src="/asystent/res/dots.gif" alt="Aida is typing...">')
+    $('.thinking').html('<img class="dots" src="/res/dots.gif" alt="Aida is typing...">')
     setTimeout(function(){
         $('#messages div.assistant:last').remove();
         if (bot.response(bot.input) != undefined) {
@@ -447,7 +447,7 @@ function addInfo() {
     updateChat('client',$('#newInfo').val());
     learn[bot.input] = $('#newInfo').val();
     updateChat('assistant',`For ${bot.input} I will response ${learn[bot.input]}`);
-    $.ajax({url: `/asystent/dev/nauka.php?q=[EN]%20${bot.input}&a=${$('#newInfo').val()}`});
+    $.ajax({url: `/dev/nauka.php?q=[EN]%20${bot.input}&a=${$('#newInfo').val()}`});
     $('#newInfo').val('');
     $('#newInfo').hide();
     $('#clientInput').focus();
@@ -466,7 +466,7 @@ function checkName() {
 function saveName() {
     localStorage.setItem('aida-name',$('#name').val());
     updateChat('client',localStorage['aida-name']);
-    $.ajax({url: '/asystent/dev/licznik.php'});
+    $.ajax({url: '/dev/licznik.php'});
     $('#name').hide();
     $('#name').val('');
     $('#clientInput').focus();
@@ -482,8 +482,8 @@ function shuffle(a) {
 };
 
 function checkLang() {
-    if (localStorage['aida-currentLang'] == undefined) location.replace('/asystent/');
-    if (localStorage['aida-currentLang'] != location.href.substr(-10,2)) location.replace(`/asystent/${localStorage['aida-currentLang']}/?online`);
+    if (localStorage['aida-currentLang'] == undefined) location.replace('/');
+    if (localStorage['aida-currentLang'] != location.href.substr(-10,2)) location.replace(`/${localStorage['aida-currentLang']}/?online`);
 }
 
 $(document).ready(checkLang());

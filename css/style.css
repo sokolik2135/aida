@@ -30,10 +30,7 @@
     content: ' 😂';
 }
 
-@font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-Light.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin-ext');
 
 @keyframes rotating {
     from { transform: rotate(0deg); }

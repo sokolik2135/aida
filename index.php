@@ -85,7 +85,7 @@
 <body>
     <div id="header"></div>
     <div id="languages"></div>
-    <script src="/asystent/js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         var hello = {
             'pl':'Witaj, jestem Aida',
@@ -100,7 +100,7 @@
             success: function(r){
                 var lang = r.split(',');
                     for (var i of lang) {
-                        $('#languages').append(`<a href="/asystent/${i}"><img src="/asystent/res/flags/${i}.png">${i}</a>`);
+                        $('#languages').append(`<a href="/${i}"><img src="/res/flags/${i}.png">${i}</a>`);
                         $('#header').append(`<h1>${hello[i]}</h1>`)
                     }
             }
@@ -114,7 +114,7 @@
         }, 5000);
 
         if (localStorage['aida-currentLang'] != undefined) {
-            location.replace('/asystent/'+localStorage['aida-currentLang']+'/');
+            location.replace('/'+localStorage['aida-currentLang']+'/');
         }
     </script>
 </body>

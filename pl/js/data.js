@@ -68,9 +68,9 @@ setInterval(function(){
         // h
         'hah': ['','laugh'],
         'haha': ['','laugh'],
-        'hotel': ['<a href="http://trivago.pl" target="_blank"><img src="/asystent/res/trivago.png" alt="trivago" style="width:100%;height:initial;border-radius:16px;"></a>','html'],
-        'hotel?': ['<a href="http://trivago.pl" target="_blank"><img src="/asystent/res/trivago.png" alt="trivago" style="width:100%;height:initial;border-radius:16px;"></a>','html'],
-        'hotel ?': ['<a href="http://trivago.pl" target="_blank"><img src="/asystent/res/trivago.png" alt="trivago" style="width:100%;height:initial;border-radius:16px;"></a>','html'],
+        'hotel': ['<a href="http://trivago.pl" target="_blank"><img src="/res/trivago.png" alt="trivago" style="width:100%;height:initial;border-radius:16px;"></a>','html'],
+        'hotel?': ['<a href="http://trivago.pl" target="_blank"><img src="/res/trivago.png" alt="trivago" style="width:100%;height:initial;border-radius:16px;"></a>','html'],
+        'hotel ?': ['<a href="http://trivago.pl" target="_blank"><img src="/res/trivago.png" alt="trivago" style="width:100%;height:initial;border-radius:16px;"></a>','html'],
     
         // i
     

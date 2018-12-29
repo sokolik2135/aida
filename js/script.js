@@ -3,7 +3,7 @@ $('#name').hide();
 var i = 0;
 var learn = {};
 
-if (localStorage['aida-currentLang'] == undefined) location.replace('/asystent/');
+if (localStorage['aida-currentLang'] == undefined) location.replace('/');
 if (localStorage['aida-color'] == undefined) localStorage.setItem('aida-color','#ffffff');
 if (localStorage['aida-bgColor'] == undefined) localStorage.setItem('aida-bgColor','#0091fe');
 if (localStorage['aida-rememberedList'] == undefined) localStorage.setItem('aida-rememberedList','');

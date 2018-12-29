@@ -12,12 +12,12 @@
 
     <title>Aida - Votre assistant personnel!</title>
     
-    <link rel="stylesheet" href="/asystent/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 
     <!-- Android -->
-    <link rel="manifest" href="/asystent/manifest.json">
-    <link rel="shortcut icon" href="/asystent/favicon.png" type="image/png">
-    <link rel="icon" href="/asystent/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png">
     <!-- iOS -->
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="apple-touch-startup-image" href="favicon.png">
@@ -36,8 +36,8 @@
         &copy;2018&nbsp;|&nbsp;Piotr&nbsp;Sokołowski
     </footer>
     <script>
-        $('main>h1').append(`<img style="height:1em;width:initial;margin-left:20px;" src="/asystent/res/flags/${location.href.substr(-3,2)}.png">`)
+        $('main>h1').append(`<img style="height:1em;width:initial;margin-left:20px;" src="/res/flags/${location.href.substr(-3,2)}.png">`)
     </script>
-    <!-- <script src="/asystent/sw.js"></script> -->
+    
 </body>
 </html>
