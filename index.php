@@ -72,9 +72,15 @@
             display: none;
         }
         @media screen and (max-width: 767px) {
-            #languages > div {
-                margin: 20px;
+            #languages > a {
+                margin: 10px;
                 width: 100%;
+                font-size: 30px;
+                padding: 15px;
+            }
+            #header {
+                height: 100px;
+                background: url('/res/icons/xxxhdpi.png') no-repeat;
             }
         }
     </style>
