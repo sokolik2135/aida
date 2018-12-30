@@ -3,7 +3,7 @@ var puste = 'You typed nothing...';
 var version = 'v0.7.3';
 
 var changelog = [
-    'v0.7.3:<br>Initial English release,<br>'
+    'v0.7.3:<br>Initial English release'
 ];
 
 var jokes = [

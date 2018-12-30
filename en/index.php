@@ -103,8 +103,6 @@
             <h2>What's next?</h2>
             <p>I hope there will be further development of Assistant, introduction of better and better solutions and improvements. Maybe someday even deeper integration with device like e.g. modifying system settings.</p>
         </article>
-        <a id="download" href="download.php">Download</a>
-        <span>or</span>
         <a id="online" href="./?online">Launch in browser</a>
     </main>
     <footer>

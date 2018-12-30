@@ -103,8 +103,6 @@
             <h2>Co dalej?</h2>
             <p>Mam nadzieję, że dalszy rozwój asystentki, wprowadzanie coraz lepszych rozwiązań i usprawnień. Może kiedyś nawet głębsza integracja z urządzeniem jak na przykład modyfikacja ustawień.</p>
         </article>
-        <a id="download" href="download.php">Pobierz</a>
-        <span>lub</span>
         <a id="online" href="./?online">Uruchom w przeglądarce</a>
     </main>
     <footer>

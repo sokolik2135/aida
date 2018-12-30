@@ -22,8 +22,8 @@
     </nav>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
-        if (localStorage['aida-currentLang'] == undefined) localStorage.setItem('aida-currentLang',location.href.substr(-3,2));
-        else localStorage['aida-currentLang'] = location.href.substr(-3,2);
+        if (localStorage['aida-currentLang'] == undefined) localStorage.setItem('aida-currentLang',location.href.substr(location.href.lastIndexOf('/')-2,2));
+        else localStorage['aida-currentLang'] = location.href.substr(location.href.lastIndexOf('/')-2,2);
 
         $('nav>div:last-child').append(`<a href="/${localStorage['aida-currentLang']}"><img src="/res/flags/${localStorage['aida-currentLang']}.png">${localStorage['aida-currentLang'].toUpperCase()}</a><div></div>`);
 
