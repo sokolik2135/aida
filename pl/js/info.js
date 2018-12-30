@@ -1,4 +1,4 @@
-var version = 'v0.7.2 Natalia';
+var version = 'v0.7.3';
 
 if (localStorage['aida-name'] != undefined) {
     if (localStorage['aida-name'].substr(localStorage['aida-name'].length-1) == 'a') {
@@ -26,7 +26,8 @@ var changelog = [
     'v0.6.7 Kacper:<br>Eliminacja błędów (interpretacja kodu HTML),<br>Głosowa informacja o dacie oraz godzinie,<br>Aplikacja nie jest wymagana (problemy po odświeżeniu aplikacji, aplikacja zajmuje za dużo miejsca),<br>Asystent umie już liczyć, obsługuje podstawowe działania (+,-,*,/) i potęgowanie (^)',
     'v0.7:<br>Napisany od nowa kod,<br>Dodana opcja douczania Asystenta odpowiedzi na nieznane pytania,<br>Lepsza obsługa imienia',
     'v0.7.1 Ola:<br>Poprawiona obsługa poleceń uruchamiających akcje (zapamiętaj, otwórz, zapomnij),<br>Możliwość zmiany kolorów czatu <code>kolory <u>kolor tekstu</u> <u>kolor dymku</u></code>',
-    'v0.7.2 Natalia:<br>Tłumaczenie z obcego języka na język obecnie ustawiony (obecnie polski, możliwość zmiany języka wkrótce),<br>Możliwość zmiany języka (domyślnie polski)'
+    'v0.7.2 Natalia:<br>Tłumaczenie z obcego języka na język obecnie ustawiony,<br>Możliwość zmiany języka',
+    'v0.7.3:<br>Dodany język angielski,<br>Rozpoczęcie prac nad językiem niemieckim i francuskim'
 ];
 
 var jokes = [
