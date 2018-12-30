@@ -82,3 +82,10 @@ var przyklady = [
     '<span title="Przykład: Napisz do +48123456789, że Aida potrafi wysyłać SMSy">Napisać wiadomość SMS</span>',
     '<span title="Przykład: Kolory white hotpink">Zmienić kolor czatu</span>'
 ];
+
+howRU = [
+    'Wszystko dobrze',
+    'Fajnie, a tam?',
+    'Leci',
+    'W porządku'
+];

@@ -39,10 +39,17 @@ var imie = [
 ]
 
 var przyklady = [
-    '<span title="Przykład: Remember +48123456789">Remember informations</span>',
-    '<span title="Przykład: Open Facebook">Open the selected website</span>',
-    '<span title="Przykład: Tell me a joke">Telling jokes</span>',
-    '<span title="Przykład: Call +48123456789">Dial the telephone number</span>',
-    '<span title="Przykład: Send message to +48123456789, that Aida can send messages">Create SMS</span>',
-    '<span title="Przykład: Colors white hotpink">Change colors</span>'
+    '<span title="Example: Remember +48123456789">Remember informations</span>',
+    '<span title="Example: Open Facebook">Open the selected website</span>',
+    '<span title="Example: Tell me a joke">Telling jokes</span>',
+    '<span title="Example: Call +48123456789">Dial the telephone number</span>',
+    '<span title="Example: Send message to +48123456789, that Aida can send messages">Create SMS</span>',
+    '<span title="Example: Colors white hotpink">Change colors</span>'
+];
+
+howRU = [
+    'I\'m fine',
+    'Fine, and you?',
+    'Fine',
+    'Good'
 ];

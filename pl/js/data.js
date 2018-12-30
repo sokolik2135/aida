@@ -3,6 +3,7 @@ setInterval(function(){
         // wiadomość: odpowiedź
     
         // a
+        'admin123#': ['Elektryk jak nic','laugh'],
         'ayo ladies and gentleman': 'Wo-oh-oh!',
         'ayo ladies and gentleman!': 'Wo-oh-oh!',
         'ayo, ladies and gentleman': 'Wo-oh-oh!',
@@ -34,8 +35,8 @@ setInterval(function(){
         'co potrafisz robić?': ['Umiem:<br>'+przyklady.join(',<br>'),'html'],
         'co robisz': 'A nic takiego, a Ty?',
         'co robisz?': 'A nic takiego, a Ty?',
-        'co tam': ['Wszystko dobrze','proud'],
-        'co tam?': ['Wszystko dobrze','proud'],
+        'co tam': [howRU[0],'proud'],
+        'co tam?': [howRU[0],'proud'],
         'czemu mój kod nie działa?': 'Bo jesteś beztalenciem, '+localStorage['aida-name']+'.',
         'cześć': hello[0],
         'czesć': hello[0],
@@ -77,6 +78,7 @@ setInterval(function(){
         // j
         'jak robi lis': ['Ring-ding-ding-ding-dingeringeding!<br>Wa-pa-pa-pa-pa-pa-pow!<br>Lub coś takiego','fox html'],
         'jak robi lis?': ['Ring-ding-ding-ding-dingeringeding!<br>Wa-pa-pa-pa-pa-pa-pow!<br>Lub coś takiego','fox html'],
+        'jak tam':[howRU[0],'proud'],
         'jaki jest dzis dzien': 'Dziś jest '+dzien(),
         'jaki jest dzis dzien?': 'Dziś jest '+dzien(),
         'jaki jest dzis dzień': 'Dziś jest '+dzien(),
@@ -115,6 +117,10 @@ setInterval(function(){
         // n
         'nie wiem': 'Szkoda',
         'no': 'No nie wiem kurde no',
+        'no cos': ['Coś','laugh'],
+        'no cos ty': 'No co?',
+        'no coś': ['Coś','laugh'],
+        'no coś ty': 'No co?',
         'noo': 'No nie wiem kurde no',
         'nowości': [changelog[changelog.length-1],'html'],
     
@@ -131,6 +137,8 @@ setInterval(function(){
         // ó
     
         // p
+        'powiedz cos': ['Ale co?','laugh'],
+        'powiedz coś': ['Ale co?','laugh'],
     
         // q
     
