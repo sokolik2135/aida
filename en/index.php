@@ -83,7 +83,7 @@
             <p>Aida is a virtual assistant created for VIII Science Picnic in ZSEM. It was written in JavaScript, making Aida working on every platform.</p>
         </article>
         <article>
-            <h2>Where did the idea come from?</h2>
+            <h2>Where did the idea came from?</h2>
             <p>Initially it was only joke made to show disadvantages of JavaScript, however, with time it turned out that the project makes sense, it gained the present name at that time.</p>
         </article>
         <article>
