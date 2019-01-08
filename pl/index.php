@@ -35,6 +35,7 @@
         header('Location: /?online');
     }
     if (isset($_GET['online'])) {
+        if (isset($_GET['frame'])) echo '<script>localStorage.setItem(\'aida-currentLang\',\'pl\')</script>';
         ?>
     <div id="bg"></div>
     <div id="sp">
