@@ -87,47 +87,6 @@ header > nav a:hover {
     background: #0091FE;
 }
 
-header > nav > div > a + div {
-    display: none;
-    position: absolute;
-    top: 0;
-    padding-top: 60px;
-    padding-bottom: 20px;
-    border-radius: 0 0 0 15px;
-    box-shadow: 0px 5px 20px #888888;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: white;
-}
-
-nav > div:hover > a + div {
-    display:flex;
-}
-
-header > nav > div > a + div > a {
-    text-decoration: none;
-    margin: 5px 0 0;
-    padding: 10px;
-    border-radius: 100px;
-    border: 1px solid #0091FE;
-    color: #0091FE;
-    transition: 0.2s;
-}
-
-header > nav > div:last-child > a,
-header > nav > div > a + div > a {
-    display: flex;
-    width: 50px;
-    align-items: center;
-    justify-content: center;
-}
-
-header > nav div > a > img {
-    width: initial;
-    height: 1em;
-    margin-right: 5px;
-}
-
 #icon {
     padding-left: 10px;
     height: 50px;
@@ -163,7 +122,7 @@ main > #header {
     padding: 0 20px;
     height: 300px;
     margin-bottom: 30px;
-    background: url('../favicon.png') no-repeat;
+    background: url('/favicon.png') no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -243,7 +202,7 @@ footer {
 
     main > #header {
         height: 100px;
-        background: url('../icons/xxxhdpi.png') no-repeat;
+        background: url('/res/icons/xxxhdpi.png') no-repeat;
     }
 
     main > article {

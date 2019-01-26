@@ -142,7 +142,7 @@ h1 {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 3em;
 }
 
 #sp_icon {
@@ -176,6 +176,26 @@ h1 {
     flex-wrap: wrap;
 }
 
+#info {
+    z-index: 6;
+    position: fixed;
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 20px #aaa;
+    height: 2em;
+}
+
+#info > .clock {
+    right: 0;
+}
+
+#info > .battery,
+#info > .clock {
+    position: absolute;
+    padding: 5px 10px;
+    color: black;
+}
+
 #top {
     position: fixed;
     top: 0;
@@ -201,13 +221,13 @@ code {
 
 /* scrollbar */
 
-::-webkit-scrollbar {
-    width: 2px;
-}
+    ::-webkit-scrollbar {
+        width: 2px;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: grey;
-}
+    ::-webkit-scrollbar-thumb {
+        background: grey;
+    }
 
 /* scrollbar - end */
 
@@ -223,6 +243,7 @@ code {
     border-top: 1px solid #ddd;
     padding: 0 10px;
     box-sizing: border-box;
+    margin: 0 40px;
 }
 
 #clientInput:focus,
@@ -236,10 +257,12 @@ code {
     z-index: 999;
 }
 
-#send {
-    background: white url('../res/send.png') no-repeat -3px 0;
-    background-size: 24px 24px;
-    background-position: center;
+#send,
+#voice {
+    background-image: url('../res/send.png');
+    background-size: auto 70%;
+    background-position: center center;
+    background-repeat: no-repeat;
     z-index: 9;
     position: fixed;
     height: 40px;
@@ -250,6 +273,12 @@ code {
     border: 0;
     border-top: 1px solid #ddd;
     cursor: pointer;
+}
+
+#voice {
+    background-image: url('../res/mic.png');
+    right: unset;
+    left: 0;
 }
 
 #messages {
