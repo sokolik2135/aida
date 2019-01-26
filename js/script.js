@@ -15,7 +15,7 @@ class chatBot {
         this.response = function (input) {
             input = input.trim()
             if (input !== null && input !== '') {
-                return database[input.toLowerCase()];
+                return database[modify(input)];
             } else {
                 return puste;
             }
@@ -24,7 +24,7 @@ class chatBot {
         this.learning = function (input) {
             input = input.trim()
             if (input !== null && input !== '') {
-                return learn[input.toLowerCase()];
+                return learn[modify(input)];
             } else {
                 return puste;
             }
@@ -67,7 +67,29 @@ $('#name').keydown(function(){
     }
 });
 
+function modify(i) {
+    i = i.toLowerCase();
+    i = i.replace('ą','a');
+    i = i.replace('ć','c');
+    i = i.replace('ę','e');
+    i = i.replace('ł','l');
+    i = i.replace('ń','n');
+    i = i.replace('ó','o');
+    i = i.replace('ś','s');
+    i = i.replace('ź','z');
+    i = i.replace('ż','z');
+    i = i.replace('.',' ');
+    i = i.replace(',',' ');
+    i = i.replace('?',' ');
+    i = i.replace('!',' ');
+    i = i.replace('  ',' ');
+    i = i.trim();
+    return i;
+}
+
 setInterval(function() {
     shuffle(hello);
     shuffle(jokes);
+    shuffle(howRU);
+    shuffle(przepraszamDziekuje);
 },500);
