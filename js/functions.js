@@ -433,6 +433,8 @@ function voiceInput() {
 };
 
 if (checkOS().match(/android/ig) == null) {
+    console.log('Voice recognition ready!');
+} else {
     $('#voice').css({
         'background-image': 'url(res/mic_none.png)',
         'opacity': '0.5'
@@ -440,6 +442,7 @@ if (checkOS().match(/android/ig) == null) {
     $('#voice').on('click',function(){
         updateChat('assistant','Nie można uruchomić mikrofonu');
     });
+    console.log('Voice recognition not supported!');
 }
 
 function updateChat(who, what) {
