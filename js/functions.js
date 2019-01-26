@@ -408,33 +408,7 @@ function otworzLink() {
     }
 };
 
-function voiceInput() {
-    // Non-Apple device with Chrome
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        document.getElementById('clientInput').placeholder = 'Mów teraz';
-        var recognition = new webkitSpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        recognition.lang = "pl-PL";
-        recognition.start();
-        recognition.onresult = function(e) {
-            document.getElementById('clientInput').placeholder = 'Napisz wiadomość...';
-            document.getElementById('clientInput').value = e.results[0][0].transcript;
-            recognition.stop();
-            sendData();
-        };
-
-        recognition.onerror = function(e) {
-            updateChat('assistant','Wystąpił nieoczekiwany błąd');
-            document.getElementById('clientInput').placeholder = 'Napisz wiadomość...';
-            recognition.stop();
-        }
-    }
-};
-
-if (checkOS().match(/android/ig) == null) {
-    console.log('Voice recognition ready!');
-} else {
+if (checkOS().match(/macos/ig) || checkOS().match(/ios/ig)) {
     $('#voice').css({
         'background-image': 'url(res/mic_none.png)',
         'opacity': '0.5'
@@ -443,6 +417,31 @@ if (checkOS().match(/android/ig) == null) {
         updateChat('assistant','Nie można uruchomić mikrofonu');
     });
     console.log('Voice recognition not supported!');
+} else {
+    function voiceInput() {
+        // Non-Apple device with Chrome
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+            document.getElementById('clientInput').placeholder = 'Mów teraz';
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = "pl-PL";
+            recognition.start();
+            recognition.onresult = function(e) {
+                document.getElementById('clientInput').placeholder = 'Napisz wiadomość...';
+                document.getElementById('clientInput').value = e.results[0][0].transcript;
+                recognition.stop();
+                sendData();
+            };
+
+            recognition.onerror = function(e) {
+                updateChat('assistant','Wystąpił nieoczekiwany błąd');
+                document.getElementById('clientInput').placeholder = 'Napisz wiadomość...';
+                recognition.stop();
+            }
+        }
+    };
+    console.log('Voice recognition ready!');
 }
 
 function updateChat(who, what) {
