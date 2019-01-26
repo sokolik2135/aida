@@ -1,6 +1,3 @@
-<?php
-    if (isset($_GET['aida']) || isset($_GET['online'])) {
-        ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -130,8 +127,3 @@
     ?>
 </body>
 </html>
-<?php
-    } else {
-        header('Location: /.hidden.d');
-    }
-?>
