@@ -530,6 +530,7 @@ function addInfo() {
     updateChat('client',$('#newInfo').val());
     if ($('#newInfo').val().toLowerCase().trim() == 'nie') {
         updateChat('assistant',`Dobrze, w takim razie co dalej?`);
+        $.ajax({url: `/dev/nauka.php?q=${bot.input}&a=...`});
     } else {
         learn[bot.input] = $('#newInfo').val();
         updateChat('assistant',`Na ${bot.input} będę odpowiadać ${learn[bot.input]}`);
