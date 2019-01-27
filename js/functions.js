@@ -1,30 +1,30 @@
 function interact(input) {
-    if (input.match(/licz/ig)) {
+    if (input.toString().match(/licz/ig)) {
         return licz(input.substr(input.lastIndexOf(' ')+1));
-    } else if (input.match(/pisz/ig)) {
-        var tel = input.replace(/^([a-z\s]{1,})\s([a-z0-9\+\@]{4,})([,\szże]{4,5})([\S|\s|\d|\D]{1,})/ig,'$2');
-        var message = input.replace(/^([a-z\s]{1,})\s([a-z0-9\+\@]{4,})([,\szże]{4,5})([\S|\s|\d|\D]{1,})/ig,'$4');
+    } else if (input.toString().match(/pisz/ig)) {
+        var tel = input.toString().replace(/^([a-z\s]{1,})\s([a-z0-9\+\@]{4,})([,\szże]{4,5})([\S|\s|\d|\D]{1,})/ig,'$2');
+        var message = input.toString().replace(/^([a-z\s]{1,})\s([a-z0-9\+\@]{4,})([,\szże]{4,5})([\S|\s|\d|\D]{1,})/ig,'$4');
         return napiszSMS(tel,message);
-    } else if (input.match(/dzwo[n|ń]/ig)) {
+    } else if (input.toString().match(/dzwo[n|ń]/ig)) {
         var tel = input.substr(userInput.lastIndexOf(' '));
         return zadzwon(tel);
-    } else if (input.match(/szukaj/ig)) {
+    } else if (input.toString().match(/szukaj/ig)) {
         return search();
-    } else if (input.match(/^otw[o|ó]rz/ig)) {
+    } else if (input.toString().match(/^otw[o|ó]rz/ig)) {
         return otworzLink();
-    } else if (input.match(/^zapami[e|ę]taj/ig)) {
+    } else if (input.toString().match(/^zapami[e|ę]taj/ig)) {
         localStorage['aida-rememberedList'] += input.substr(input.indexOf(' '))+'#';
         return 'Zapamiętano '+input.substr(input.indexOf(' '))
     } else if (input == 'zapomnij wszystko') {
         return usunWszystkieZapamietane();
-    } else if (input.match(/^zapomnij/ig)) {
+    } else if (input.toString().match(/^zapomnij/ig)) {
         return zapomnij(input.substr(input.indexOf(' ')));
-    } else if (input.match(/kurw/ig) || input.match(/chuj/ig) || input.match(/suk/ig) || input.match(/pizda/ig) || input.match(/cipa/ig)) {
+    } else if (input.toString().match(/kurw/ig) || input.toString().match(/chuj/ig) || input.toString().match(/suk/ig) || input.toString().match(/pizda/ig) || input.toString().match(/cipa/ig)) {
         return 'Ej! Nie używaj takich słów!';
-    } else if (input.match(/^kolory/ig)) {
+    } else if (input.toString().match(/^kolory/ig)) {
         zmianaKoloru();
         return 'Zmieniono kolor czatu';
-    } else if (input.match(/t[l|ł]umacz/ig)) {
+    } else if (input.toString().match(/t[l|ł]umacz/ig)) {
         if (input.indexOf(' ') != -1) var toTranslate = input.trim().substr(input.indexOf(' ')).trim();
         else return puste;
         var translated = ''
@@ -37,7 +37,9 @@ function interact(input) {
             async: false
         });
         return translated;
-    } else if (input.match(/^aida:\/\//ig)) {     
+    } else if (input.toString().match(/^co to /ig)) {
+        return wiki(input.substr(6));
+    } else if (input.toString().match(/^aida:\/\//ig)) {     
         // ------------------------------ Aida dev messages ---------------------------------
         if (input == 'aida://author') return 'Piotr Sokołowski';
         if (input == 'aida://beta') {
@@ -47,7 +49,7 @@ function interact(input) {
             return 'Przechodzę do wersji beta';
         };
         if (input == 'aida://changelog') return changelog.join('<br><br>');
-        if (input.match(/^aida:\/\/debug/ig)) {
+        if (input.toString().match(/^aida:\/\/debug/ig)) {
             if (input== 'aida://debug') {
                 for (var i in window) {
                     if (typeof window[i] == 'function'){
@@ -67,7 +69,7 @@ function interact(input) {
             }
             return 'Nie znaleziono błędów'
         }
-        if (input.match(/^aida:\/\/lang/ig)) {
+        if (input.toString().match(/^aida:\/\/lang/ig)) {
             setTimeout(function(){
                 localStorage['aida-currentLang'] = input.substr(input.indexOf(' ')).trim();
                 checkLang();
@@ -188,16 +190,16 @@ function zmianaKoloru() {
 }
 
 function licz(i){
-    var result = i.replace(/([0-9]{1,})(\^)([0-9]{1,})/ig,'Math.pow($1,$3)')
+    var result = i.toString().replace(/([0-9]{1,})(\^)([0-9]{1,})/ig,'Math.pow($1,$3)')
     return result + '=' + eval(result).toString();
 };
 
 function checkOS() {
     var MobileUserAgent = navigator.userAgent || navigator.vendor || window.opera;
     var OSName = 'Nieznany';
-    if (MobileUserAgent.match(/iPad/i) || MobileUserAgent.match(/iPhone/i) || MobileUserAgent.match(/iPod/i)) {
+    if (MobileUserAgent.toString().match(/iPad/i) || MobileUserAgent.toString().match(/iPhone/i) || MobileUserAgent.toString().match(/iPod/i)) {
         OSName='iOS';
-    } else if (MobileUserAgent.match(/Android/i)) {
+    } else if (MobileUserAgent.toString().match(/Android/i)) {
         OSName='Android';
     } else {
         if (window.navigator.userAgent.indexOf("Windows NT 10.0")!= -1) OSName="Windows 10";
@@ -216,32 +218,32 @@ function checkOS() {
 
 function search(){
     var query = bot.input.substr(bot.input.indexOf(' ')+1+1,(bot.input.lastIndexOf(' w ')) - bot.input.indexOf(' ')+1 - 1);
-    if (bot.input.match(/google/)) {
+    if (bot.input.toString().match(/google/)) {
         setTimeout(function(){
             open('https://www.google.com/search?q='+encodeURI(query));
         },1500);
         return 'Szukam w Google';
-    } else if (bot.input.match(/youtube/ig)) {
+    } else if (bot.input.toString().match(/youtube/ig)) {
         setTimeout(function(){
             open('https://www.youtube.com/results?search_query='+encodeURI(query));
         },1500);
         return 'Szukam w Youtube';
-    } else if (bot.input.match(/wolfram/ig)) {
+    } else if (bot.input.toString().match(/wolfram/ig)) {
         setTimeout(function(){
             open('https://www.wolframalpha.com/input/?i='+encodeURI(query));
         },1500);
         return 'Szukam w Wolfram|Alpha';
-    } else if (bot.input.match(/wiki/ig)) {
+    } else if (bot.input.toString().match(/wiki/ig)) {
         setTimeout(function(){
             open('https://pl.wikipedia.org/w/index.php?search='+encodeURI(query));
         },1500);
         return 'Szukam w Wikipedii';
-    } else if (bot.input.match(/github/ig)) {
+    } else if (bot.input.toString().match(/github/ig)) {
         setTimeout(function(){
             open('https://github.com/search?utf8=✓&q='+encodeURI(query));
         },1500);
         return 'Szukam na Githubie';
-    } else if (bot.input.match(/sklep/ig) && bot.input.match(/play/ig)) {
+    } else if (bot.input.toString().match(/sklep/ig) && bot.input.toString().match(/play/ig)) {
         setTimeout(function(){
             open('https://play.google.com/store/search?q='+encodeURI(query));
         },1500);
@@ -258,7 +260,7 @@ function napiszSMS(t,m){
     if (t == bot.input || m == bot.input) {
         return 'Nie podałeś treści wiadomości lub numeru telefonu, albo zrobiłeś błąd w składnii';
     } else {
-        if (t.match(/@/ig)){
+        if (t.toString().match(/@/ig)){
             console.log('mail');
             var link = 'mailto:'+t+'?body='+encodeURI(m);
             return '"'+m+'" do '+t;
@@ -287,7 +289,7 @@ function napiszSMS(t,m){
 }
 
 function zadzwon(t) {
-    if (t.match(/+[0-9]{4,}/ig) || t.match(/[0-9]{3}/ig)) {
+    if (t.toString().match(/+[0-9]{4,}/ig) || t.toString().match(/[0-9]{3}/ig)) {
         var link = 'tel:'+t;
 
         if (checkOS() == 'iOS' || checkOS() == 'Android') {
@@ -340,62 +342,62 @@ function usunWszystkieZapamietane() {
 
 function otworzLink() {
     var link = bot.input.substr(bot.input.indexOf(' ')+1);
-    if (link.match(/facebook/ig)) {
+    if (link.toString().match(/facebook/ig)) {
         setTimeout(function(){
             open('https://facebook.com/');
         },1500);
         return 'Otwieram Facebooka';
-    } else if (link.match(/messenger/ig)) {
+    } else if (link.toString().match(/messenger/ig)) {
         setTimeout(function(){
             open('https://messenger.com/');
         },1500);
         return 'Otwieram Messengera';
-    } else if (link.match(/onedrive/ig) || link.match(/łandrajw/ig)) {
+    } else if (link.toString().match(/onedrive/ig) || link.toString().match(/łandrajw/ig)) {
         setTimeout(function(){
             open('https://onedrive.live.com/');
         },1500);
         return 'Otwieram Onedrive';
-    } else if (link.match(/t[l|ł]umacz/ig)) {
+    } else if (link.toString().match(/t[l|ł]umacz/ig)) {
         setTimeout(function(){
             open('https://onedrive.live.com/');
         },1500);
         return 'Otwieram Onedrive';
-    } else if (link.match(/mapy/ig) || (link.match(/mapy/ig) && link.match(/google/ig))) {
+    } else if (link.toString().match(/mapy/ig) || (link.toString().match(/mapy/ig) && link.toString().match(/google/ig))) {
         setTimeout(function(){
             open('https://maps.google.com/');
         },1500);
         return 'Otwieram Mapy Google';
-    } else if (link.match(/dysk/ig) || link.match(/drive/ig)) {
+    } else if (link.toString().match(/dysk/ig) || link.toString().match(/drive/ig)) {
         setTimeout(function(){
             open('https://drive.google.com/');
         },1500);
         return 'Otwieram Dysk Google';
-    } else if (link.match(/google/ig)) {
+    } else if (link.toString().match(/google/ig)) {
         setTimeout(function(){
             open('https://google.com/');
         },1500);
         return 'Otwieram Google';
-    } else if (link.match(/youtube/ig)) {
+    } else if (link.toString().match(/youtube/ig)) {
         setTimeout(function(){
             open('https://youtube.com/');
         },1500);
         return 'Otwieram Youtube';
-    } else if (link.match(/plan/ig) && link.match(/zsem/ig)) {                      // ZSEM
+    } else if (link.toString().match(/plan/ig) && link.toString().match(/zsem/ig)) {                      // ZSEM
         setTimeout(function(){                                                      // ZSEM
             open('http://zsem.edu.pl/plany/');                                      // ZSEM
         },1500);                                                                    // ZSEM
         return 'Otwieram plan lekcji ZSEM';                                         // ZSEM
-    } else if (link.match(/zast[e|ę]pstwa/ig) && link.match(/zsem/ig)) {            // ZSEM
+    } else if (link.toString().match(/zast[e|ę]pstwa/ig) && link.toString().match(/zsem/ig)) {            // ZSEM
         setTimeout(function(){                                                      // ZSEM
             open('http://zsem.edu.pl/zastepstwa/');                                 // ZSEM
         },1500);                                                                    // ZSEM
         return 'Otwieram zastępstwa ZSEM';                                          // ZSEM
-    } else if (link.match(/^(http|https|ftp):\/\/[a-z.]{1,}\.[a-z]{1,}$/ig)) {
+    } else if (link.toString().match(/^(http|https|ftp):\/\/[a-z.]{1,}\.[a-z]{1,}$/ig)) {
         setTimeout(function(){
             open(link);
         },1500);
         return `Otwieram ${link}`;
-    } else if (link.match(/^[a-z.]{1,}\.[a-z]{1,}$/ig)) {
+    } else if (link.toString().match(/^[a-z.]{1,}\.[a-z]{1,}$/ig)) {
         setTimeout(function(){
             open('http://'+link);
         },1500);
@@ -408,7 +410,31 @@ function otworzLink() {
     }
 };
 
-if (checkOS().match(/macos/ig) || checkOS().match(/ios/ig)) {
+function wiki(q) {
+    def = '';
+    $.ajax({
+        url: 'http://pl.wikipedia.org/w/api.php',
+        data: {
+            action: 'query',
+            list: 'search',
+            srsearch: q,
+            format: 'json',
+            formatversion: 2
+        },
+        dataType: 'jsonp',
+        success: function (x) {
+            def = `${x.query.search[0].snippet}... <a href="http://pl.wikipedia.org/wiki/${x.query.search[0].title}" target="_blank">Czytaj dalej...</a>`;
+        },
+        async: true
+    });
+    setTimeout(() => {
+        updateChat('assistant',[def,'html']);
+    }, 2500);
+    return 'Oto znaleziona definicja:';
+}
+
+// Voice recognition
+if (checkOS().toString().match(/macos/ig) || checkOS().toString().match(/ios/ig)) {
     $('#voice').css({
         'background-image': 'url(res/mic_none.png)',
         'opacity': '0.5'
@@ -445,7 +471,7 @@ if (checkOS().match(/macos/ig) || checkOS().match(/ios/ig)) {
 }
 
 function updateChat(who, what) {
-    if (what.match(/#new#/ig)) {
+    if (what.toString().match(/#new#/ig) != null) {
         what = what.split('#new#');
         for (v of what) {
             $('#messages').append('<div class="message '+who+'"><span class="'+who+'"></span></div>');
@@ -453,10 +479,10 @@ function updateChat(who, what) {
         }
     } else {
         $('#messages').append('<div class="message '+who+'"><span class="'+who+'"></span></div>');
-        if ($(`#messages span.client:last`).text().match(/pami[e|ę]ta/ig) || $('#messages span.client:last').text().match(/^aida:\/\//ig)) {
+        if ($(`#messages span.client:last`).text().toString().match(/pami[e|ę]ta/ig) || $('#messages span.client:last').text().toString().match(/^aida:\/\//ig)) {
             $(`#messages span.${who}:last`).html(what);
-        } else if (jQuery.type(bot.response(bot.input)) == 'array' && bot.response(bot.input)[1].match(/html/ig)) {
-            $(`#messages span.${who}:last`).html(what);
+        } else if ($.type(what) == 'array' && what[1].toString().match(/html/ig)) {
+            $(`#messages span.${who}:last`).html(what[0]);
         } else {
             $(`#messages span.${who}:last`).text(what);
         }
@@ -464,7 +490,7 @@ function updateChat(who, what) {
     $('#messages').stop().animate({
         scrollTop: $('#messages').prop('scrollHeight')
     });
-    if (who == 'assistant' && !what.match(/<img/ig)) responsiveVoice.speak(what.replace(/<br>/ig,' ').replace(/(<a)([\s\S]{1,})(>)([\s\S]{1,})(<\/a>)/ig,'$4'),'Polish Female');
+    if (who == 'assistant' && !what.toString().match(/<img/ig)) responsiveVoice.speak(what.toString().replace(/<br>/ig,' ').replace(/<[^>]+>/ig,'').replace(/(\.){1,}/ig,'.').replace(/\,html$/ig,'').replace(' - ',','),'Polish Female');
     $('#messages span.client:last').css({
         'color': localStorage['aida-color'],
         'background-color': localStorage['aida-bgColor'],
@@ -547,8 +573,8 @@ function shuffle(a) {
 };
 
 function checkLang() {
-    if (localStorage['aida-currentLang'] == undefined) location.replace('/');
-    if (localStorage['aida-currentLang'] != location.href.substr(-10,2)) location.replace(`/${localStorage['aida-currentLang']}/?online`);
+    if (localStorage['aida-currentLang'] == undefined) location.toString().replace('/');
+    if (localStorage['aida-currentLang'] != location.href.substr(-10,2)) location.toString().replace(`/${localStorage['aida-currentLang']}/?online`);
 }
 
 // $(document).ready(checkLang());

@@ -329,6 +329,10 @@ code {
     border: 1px solid #ddd;
 }
 
+#messages > .message > .assistant .searchmatch {
+    font-weight: bold;
+}
+
 .thinking img,
 img.dots {
     height: 1em;
