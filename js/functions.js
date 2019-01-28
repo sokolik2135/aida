@@ -573,10 +573,4 @@ function shuffle(a) {
     return a;
 };
 
-function checkLang() {
-    if (localStorage['aida-currentLang'] == undefined) location.toString().replace('/');
-    if (localStorage['aida-currentLang'] != location.href.substr(-10,2)) location.toString().replace(`/${localStorage['aida-currentLang']}/?online`);
-}
-
-// $(document).ready(checkLang());
 $(document).ready(checkName());
