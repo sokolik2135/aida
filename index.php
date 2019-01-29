@@ -1,3 +1,7 @@
+<?php
+    if (isset($_GET['a'])) header('Location: /.hidden.d');
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -68,12 +72,14 @@
         <input type="text" name="name" id="name">
         <div id="send" onclick="sendData()"></div>
     </div>
-    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/info.js"></script>
+    <script src="/js/responsivevoice.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/info.js"></script>
     <script src="/js/script.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/data.js"></script>
+    <script src="/js/functions.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/cache-polyfill.js"></script>
+    <script src="/sw.js"></script>
     
     <?php
     } else {
