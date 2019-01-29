@@ -413,7 +413,7 @@ function otworzLink() {
 function wiki(q) {
     def = '';
     $.ajax({
-        url: 'http://pl.wikipedia.org/w/api.php',
+        url: 'https://pl.wikipedia.org/w/api.php',
         data: {
             action: 'query',
             list: 'search',
@@ -423,7 +423,7 @@ function wiki(q) {
         },
         dataType: 'jsonp',
         success: function (x) {
-            def = `${x.query.search[0].snippet}... <a href="http://pl.wikipedia.org/wiki/${x.query.search[0].title}" target="_blank">Czytaj dalej...</a>`;
+            def = `${x.query.search[0].snippet}... <a href="https://pl.wikipedia.org/wiki/${x.query.search[0].title}" target="_blank">Czytaj dalej...</a>`;
         },
         async: true
     });
@@ -445,29 +445,30 @@ if (checkOS().toString().match(/macos/ig) || checkOS().toString().match(/ios/ig)
     console.log('Voice recognition not supported!');
 } else {
     function voiceInput() {
-        // Non-Apple device with Chrome
-        if (window.hasOwnProperty('webkitSpeechRecognition')) {
-            document.getElementById('clientInput').placeholder = 'Mów teraz';
-            var recognition = new webkitSpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.lang = "pl-PL";
-            recognition.start();
-            recognition.onresult = function(e) {
-                document.getElementById('clientInput').placeholder = 'Napisz wiadomość...';
-                document.getElementById('clientInput').value = e.results[0][0].transcript;
-                recognition.stop();
-                sendData();
-            };
+    // Non-Apple device with Chrome
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+        $('#clientInput').placeholder = 'Mów teraz';
+        var recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "pl-PL";
+        recognition.start();
+        recognition.onresult = function(e) {
+            $('#clientInput').placeholder = 'Napisz wiadomość...';
+            $('#clientInput').value = e.results[0][0].transcript;
+            recognition.stop();
+            sendData();
+        };
 
-            recognition.onerror = function(e) {
-                updateChat('assistant','Wystąpił nieoczekiwany błąd');
-                document.getElementById('clientInput').placeholder = 'Napisz wiadomość...';
-                recognition.stop();
-            }
-        }
-    };
-    console.log('Voice recognition ready!');
+        recognition.onerror = function(e) {
+            updateChat('assistant','Wystąpił nieoczekiwany błąd');
+            $('#clientInput').placeholder = 'Napisz wiadomość...';
+            console.log(e);
+            recognition.stop();
+        };
+
+        console.log('Voice recognition ready!');
+    }
 }
 
 function updateChat(who, what) {

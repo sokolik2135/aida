@@ -259,6 +259,7 @@ code {
 
 #send,
 #voice {
+    background-color: white;
     background-image: url('../res/send.png');
     background-size: auto 70%;
     background-position: center center;
