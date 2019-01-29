@@ -78,7 +78,6 @@
     <script src="/js/script.js"></script>
     <script src="/js/functions.js"></script>
     <script src="/js/data.js"></script>
-    <script src="/cache-polyfill.js"></script>
     <script src="/sw.js"></script>
     
     <?php
@@ -127,6 +126,7 @@
             }
         });
     </script>
+    <script src="/sw.js"></script>
     
     <?php
         }
