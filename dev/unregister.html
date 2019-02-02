@@ -8,12 +8,8 @@
 </head>
 <body>
     <script>
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for (let registration of registrations) {
-                registration.unregister();
-                document.writeln('Service Worker unregistered!');
-            }
-        });
+        caches.delete('aida');
+        document.write('<h1>Cache deleted!</h1>')
     </script>
 </body>
 </html>

@@ -91,17 +91,16 @@ function interact(input) {
             return 'Uruchamiam ponownie...';
         };
         if (input == 'aida://clear-data' || input == 'aida://factory-reset') {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for (let registration of registrations) {
-                    registration.unregister();
-                    console.log('ServiceWorker unregistered!');
-                }
-            });
             setTimeout(function(){
+                caches.delete('aida');
                 localStorage.clear();
                 location.reload(true);
             }, 1500);
             return 'Przywracam do ustawień początkowych...';
+        }
+        if (input == 'aida://clear-cache') {
+            caches.delete('aida');
+            return 'Pamięć cache została wyczyszczona';
         }
         if (input == 'aida://unregister') {
             navigator.serviceWorker.getRegistrations().then(function(registrations) {
