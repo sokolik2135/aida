@@ -113,7 +113,8 @@
             <h2>Co dalej?</h2>
             <p>Mam nadzieję, że dalszy rozwój asystentki, wprowadzanie coraz lepszych rozwiązań i usprawnień. Może kiedyś nawet głębsza integracja z urządzeniem jak na przykład modyfikacja ustawień.</p>
         </article>
-        <a id="online" href="./?online">Uruchom w przeglądarce</a>
+        <a class="launch" id="online" href="./?online">Uruchom w przeglądarce</a>
+        <a class="launch add-button">Zainstaluj aplikację</button>
     </main>
     <footer>
         &copy;2018&nbsp;|&nbsp;Piotr&nbsp;Sokołowski
@@ -127,6 +128,36 @@
         });
     </script>
     <script src="/sw.js"></script>
+    <script>
+        let deferredPrompt;
+        const addBtn = document.querySelector('.add-button');
+        addBtn.style.display = 'none';
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI to notify the user they can add to home screen
+            addBtn.style.display = 'flex';
+          
+            addBtn.addEventListener('click', (e) => {
+                // hide our user interface that shows our A2HS button
+                addBtn.style.display = 'none';
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+    </script>
     
     <?php
         }

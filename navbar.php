@@ -17,7 +17,7 @@
         <div><a href="./">Strona&nbsp;główna</a></div>
         <div><a href="thanks.php">Podziękowania</a></div>
         <div><a href="changelog.php">Dziennik&nbsp;zmian</a></div>
-        <div><a href="./?online">Uruchom</a></div>
+        <div><a href="#online">Uruchom</a></div>
     </nav>
 </header>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

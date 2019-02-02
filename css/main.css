@@ -152,8 +152,8 @@ main > article:hover {
     z-index: 9;
 }
 
-main > #download,
-main > #online {
+main > .launch {
+    cursor: pointer;
     text-decoration: none;
     padding: 10px;
     border-radius: 100px;
@@ -168,8 +168,7 @@ main > #online {
     height: 2em;
 }
 
-main > #download:hover,
-main > #online:hover {
+main > .launch:hover {
     color: white;
     background: #0091FE;
 }
@@ -218,8 +217,7 @@ footer {
         margin-bottom: 40px;
     }
 
-    main > #download,
-    main > #online {
+    main > .launch {
         text-decoration: none;
         padding: 10px;
         border-radius: 100px;
@@ -234,8 +232,7 @@ footer {
         height: 2em;
     }
 
-    main > #download:hover,
-    main > #online:hover {
+    main > .launch:hover {
         color: white;
         background: #0091FE;
     }
@@ -257,7 +254,7 @@ footer {
         bottom: 0;
     }
 
-    main > #download {
+    main > .launch {
         margin-bottom: 100px;
     }
 }
