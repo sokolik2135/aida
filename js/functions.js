@@ -22,7 +22,9 @@ function interact(input) {
     } else if (input.toString().match(/kurw/ig) || input.toString().match(/chuj/ig) || input.toString().match(/suk/ig) || input.toString().match(/pizda/ig) || input.toString().match(/cipa/ig)) {
         return 'Ej! Nie używaj takich słów!';
     } else if (input.toString().match(/^kolory/ig)) {
-        zmianaKoloru();
+        var colors = bot.input.substr(bot.input.indexOf(' ')+1);
+        var color = colors.split(' ');
+        zmianaKoloru(color[0],color[1]);
         return 'Zmieniono kolor czatu';
     } else if (input.toString().match(/t[l|ł]umacz/ig)) {
         if (input.indexOf(' ') != -1) var toTranslate = input.trim().substr(input.indexOf(' ')).trim();
@@ -56,7 +58,7 @@ function interact(input) {
         };
         if (input == 'aida://changelog') return changelog.join('<br><br>');
         if (input.toString().match(/^aida:\/\/debug/ig)) {
-            if (input== 'aida://debug') {
+            if (input == 'aida://debug') {
                 for (var i in window) {
                     if (typeof window[i] == 'function'){
                         try {
@@ -117,7 +119,7 @@ function interact(input) {
         $('#newInfo').focus();
         return 'Nie wiem jak mogę na to odpowiedzieć... Możesz mi podać przykład?';
     }
-}
+};
 
 // Bateria
 setInterval(function(){
@@ -196,19 +198,17 @@ function dzien(){
     return day + '.' + month + '.' + year;
 };
 
-function zmianaKoloru() {
-    var colors = bot.input.substr(bot.input.indexOf(' ')+1);
-    var color = colors.split(' ');
-    if (color[0] == 'default') color[0] = 'white';
-    if (color[1] == 'default') color[1] = '#0091fe';
-    localStorage['aida-color'] = color[0];
-    localStorage['aida-bgColor'] = color[1];
+function zmianaKoloru(main,background) {
+    if (main == 'default') main = 'white';
+    if (background == 'default') background = '#0091fe';
+    localStorage['aida-color'] = main;
+    localStorage['aida-bgColor'] = background;
     $('#messages span.client').css({
         'color': localStorage['aida-color'],
         'background-color': localStorage['aida-bgColor'],
         'border-color': localStorage['aida-bgColor']
     });
-}
+};
 
 function licz(i){
     var result = i.toString().replace(/([0-9]{1,})(\^)([0-9]{1,})/ig,'Math.pow($1,$3)')
@@ -307,7 +307,7 @@ function napiszSMS(t,m){
             }
         }
     }
-}
+};
 
 function zadzwon(t) {
     if (t.toString().match(/+[0-9]{4,}/ig) || t.toString().match(/[0-9]{3}/ig)) {
@@ -324,7 +324,7 @@ function zadzwon(t) {
     } else {
         return `Nie podał${end} numeru telefonu`;
     }
-}
+};
 
 function pokazZapamietane(){
     if (localStorage['aida-rememberedList'].length != 0) {
@@ -453,7 +453,7 @@ function wiki(q) {
         updateChat('assistant',[def,'html']);
     }, 2500);
     return 'Oto znaleziona definicja:';
-}
+};
 
 // Voice recognition
 if (checkOS().toString().match(/macos/ig) || checkOS().toString().match(/ios/ig)) {
@@ -492,21 +492,31 @@ if (checkOS().toString().match(/macos/ig) || checkOS().toString().match(/ios/ig)
             console.log('Voice recognition ready!');
         }
     }
-}
+};
 
 function updateChat(who, what) {
+    console.log(what);
     if (what.toString().match(/#new#/ig) != null) {
-        what = what.split('#new#');
-        for (v of what) {
-            $('#messages').append('<div class="message '+who+'"><span class="'+who+'"></span></div>');
-            $(`#messages span.${who}:last`).text(v);
+        var msg = what.split('#new#');
+        for (v of msg) {
+            if (v.match(/,html$/ig)) {
+                updateChat('assistant',[v.replace(',html',''),'html']);
+            } else {
+                updateChat('assistant',v);
+            }
+            
         }
     } else {
         $('#messages').append('<div class="message '+who+'"><span class="'+who+'"></span></div>');
-        if ($(`#messages span.client:last`).text().toString().match(/pami[e|ę]ta/ig) || $('#messages span.client:last').text().toString().match(/^aida:\/\//ig)) {
+        if ($(`#messages span.client:last`).text().match(/pami[e|ę]ta/ig) || $('#messages span.client:last').text().match(/^aida:\/\//ig)) {
             $(`#messages span.${who}:last`).html(what);
-        } else if ($.type(what) == 'array' && what[1].toString().match(/html/ig)) {
-            $(`#messages span.${who}:last`).html(what[0]);
+        } else if ($.type(what) == 'array') {
+            if (what[1] == 'html') {
+                $(`#messages span.${who}:last`).html(what[0]);
+            } else {
+                $(`#messages span.${who}:last`).text(what[0]);
+                $('#messages span.assistant:last').addClass(what[1]);
+            }
         } else {
             $(`#messages span.${who}:last`).text(what);
         }
@@ -514,7 +524,7 @@ function updateChat(who, what) {
     $('#messages').stop().animate({
         scrollTop: $('#messages').prop('scrollHeight')
     });
-    if (who == 'assistant' && !what.toString().match(/<img/ig)) responsiveVoice.speak(what.toString().replace(/<br>/ig,' ').replace(/<[^>]+>/ig,'').replace(/(\.){1,}/ig,'.').replace(/\,html$/ig,'').replace(' - ',','),'Polish Female');
+    if (who == 'assistant' && !what.toString().match(/<[^>]+>/ig)) responsiveVoice.speak(what.toString().replace(/<br>/ig,' ').replace(/<[^>]+>/ig,'').replace(/(\.){1,}/ig,'.').replace(/\,html$/ig,'').replace(' - ',','),'Polish Female');
     $('#messages span.client:last').css({
         'color': localStorage['aida-color'],
         'background-color': localStorage['aida-bgColor'],
@@ -533,23 +543,14 @@ function sendData() {
     setTimeout(function(){
         $('#messages div.assistant:last').remove();
         if (bot.response(bot.input) != undefined) {
-            if (jQuery.type(bot.response(bot.input)) == 'array') {
-                if (bot.response(bot.input)[1] != 'html') {
-                    updateChat('assistant',bot.response(bot.input)[0]);
-                    $('#messages span.assistant:last').addClass(bot.response(bot.input)[1]);
-                } else {
-                    updateChat('assistant',bot.response(bot.input)[0]);
-                }
-            } else {
-                updateChat('assistant',bot.response(bot.input));
-            }
+            updateChat('assistant',bot.response(bot.input));
         } else if (bot.learning(bot.input) != undefined) {
             updateChat('assistant',bot.learning(bot.input));
         } else {
             updateChat('assistant',bot.interaction(bot.input));
         }
     }, 1500)
-}
+};
 
 function addInfo() {
     updateChat('client',$('#newInfo').val());
@@ -573,7 +574,8 @@ function checkName() {
         $('#name').focus();
     } else {
         if (localStorage['aida-name'] == 'Towarzyszu') {
-            updateChat('assistant',`Witajcie ${localStorage['aida-name']}! Dobrze, że wróciliście!`)
+            updateChat('assistant',`Witajcie ${localStorage['aida-name']}! Dobrze, że wróciliście!`);
+            zmianaKoloru('yellow','red');
         } else {
             updateChat('assistant',`Cześć ${localStorage['aida-name']}! Miło, że wrócił${end}!`);
         }
@@ -599,3 +601,20 @@ function shuffle(a) {
 };
 
 $(document).ready(checkName());
+
+$(document).ready(function(){
+    if (dzien().match(/^14.02/ig)) {
+        updateChat('assistant',['Udanych Walentynek','kiss']);
+        localStorage.setItem('old-color',localStorage['aida-color']);
+        localStorage.setItem('old-bgColor',localStorage['aida-bgColor']);
+        zmianaKoloru('white','red');
+    } else if (dzien().match(/^15.02/ig)) {
+        if (localStorage['old-color'] || localStorage['old-bgColor']) {
+            zmianaKoloru(localStorage['old-color'],localStorage['old-bgColor']);
+            localStorage.removeItem('old-color');
+            localStorage.removeItem('old-bgColor');
+        }
+    } else if (dzien().match(/^08.03/ig) && end == 'aś') {
+        updateChat('assistant',['Wszystkiego najlepszego z okazji dnia kobiet','kiss']);
+    }
+});

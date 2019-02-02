@@ -77,12 +77,13 @@ var imie = [
 ]
 
 var przyklady = [
-    '<span title="Przykład: Zapamiętaj +48123456789">Zapamiętywać informacje</span>',
-    '<span title="Przykład: Otwórz Facebooka">Otworzyć wybraną przez Ciebie stronę internetową</span>',
-    '<span title="Przykład: Opowiedz dowcip">Opowiadać kawały</span>',
-    '<span title="Przykład: Zadzwoń do +48123456789">Wybrać numer telefonu</span>',
-    '<span title="Przykład: Napisz do +48123456789, że Aida potrafi wysyłać SMSy">Napisać wiadomość SMS</span>',
-    '<span title="Przykład: Kolory white hotpink">Zmienić kolor czatu</span>'
+    ['<span title="Przykład: Zapamiętaj 14 lutego są Walentynki" onclick="$(\'#clientInput\').val(\'Zapamiętaj 14 lutego są Walentynki\')>Zapamiętywać informacje</span>','html'],
+    ['<span title="Przykład: Otwórz Facebooka" onclick="$(\'#clientInput\').val(\'Otwórz Facebooka\')>Otworzyć wybraną przez Ciebie stronę internetową</span>','html'],
+    ['<span title="Przykład: Opowiedz dowcip" onclick="$(\'#clientInput\').val(\'Opowiedz dowcip\')>Opowiadać kawały</span>','html'],
+    ['<span title="Przykład: Zadzwoń do +48123456789" onclick="$(\'#clientInput\').val(\'Zadzwoń do +48123456789\')>Wybrać numer telefonu</span>','html'],
+    ['<span title="Przykład: Napisz do +48123456789, że Aida potrafi wysyłać SMSy" onclick="$(\'#clientInput\').val(\'Napisz do +48123456789, że Aida potrafi wysyłać SMSy\')>Napisać wiadomość SMS</span>','html'],
+    ['<span title="Przykład: Kolory white hotpink" onclick="$(\'#clientInput\').val(\'Kolory white hotpink\')">Zmienić kolor czatu</span>','html'],
+    'Kliknij i zobacz jak!'
 ];
 
 howRU = [

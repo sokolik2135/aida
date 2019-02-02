@@ -1,16 +1,16 @@
 setInterval(function(){
     database = {
         // wiadomość: odpowiedź
+        '😘': ['','kiss'],
+        '😞': ['Co się stało?','sad'],
     
         // a
         'admin123#': ['Elektryk jak nic','laugh'],
         'ayo ladies and gentleman': 'Wo-oh-oh!',
     
-        // ą
-    
         // b
         'bateria': battery,
-        'bez urazy': 'Nie możesz mnie urazić, jestem programem',
+        'bez urazy': ['Nie możesz mnie urazić, jestem programem','proud'],
     
         // c
         'chce byc betatesterem': ['Wpisz <code>aida://beta</code> i możesz testować wersję beta, jeśli jest dostępna','proud html'],
@@ -19,14 +19,15 @@ setInterval(function(){
         'co bedzie sie dzialo na pikniku': 'Przyjdź i przekonaj się sam',
         'co nowego': [changelog[changelog.length-1],'html'],
         'co pamietasz': pokazZapamietane(),
-        'co potrafisz': ['Umiem:<br>'+przyklady.join(',<br>'),'html'],
-        'co potrafisz robic': ['Umiem:<br>'+przyklady.join(',<br>'),'html'],
+        'co potrafisz': 'Umiem:#new#'+przyklady.join('#new#'),
+        'co potrafisz robic': 'Umiem:#new#'+przyklady.join('#new#'),
         'co robisz': 'A nic takiego, a Ty?',
+        'co sie stalo temu misiu': 'Oczko mu się odlepiło 🐻',
         'co tam': [howRU[0],'proud'],
+        'co umiesz': 'Umiem:#new#'+przyklady.join('#new#'),
+        'co umiesz robic': 'Umiem:#new#'+przyklady.join('#new#'),
         'czemu moj kod nie dziala?': 'Bo jesteś beztalenciem, '+localStorage['aida-name']+'.',
         'czesc': hello[0],
-    
-        // ć
     
         // d
         'data': dzien(),
@@ -41,8 +42,6 @@ setInterval(function(){
     
         // e
         'eee': 'Szafraniec',
-    
-        // ę
     
         // f
     
@@ -60,6 +59,7 @@ setInterval(function(){
         'jak robi lis': ['Ring-ding-ding-ding-dingeringeding!<br>Wa-pa-pa-pa-pa-pa-pow!<br>Lub coś takiego','fox html'],
         'jak tam':[howRU[0],'proud'],
         'jaki jest dzis dzien': 'Dziś jest '+dzien(),
+        'jaki jest dzisiaj dzien': 'Dziś jest '+dzien(),
     
         // k
         'kacper szczerba': 'On bigos głową miesza',
