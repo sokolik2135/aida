@@ -91,3 +91,5 @@ howRU = [
     'Leci',
     'W porządku'
 ];
+
+var conversation = [''];

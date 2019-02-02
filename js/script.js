@@ -45,12 +45,12 @@ $('#clientInput').keydown(function(){
         i = 0;
     } else if (event.key === 'ArrowUp') {
         i++;
-        if (i > $('div.client').length) i = $('div.client').length;
-        $('#clientInput').val($('div.client:nth-last-of-type('+i*2+')').text());
+        if (i > conversation.length - 1) i = conversation.length - 1;
+        $('#clientInput').val(conversation[i]);
     } else if (event.key === 'ArrowDown') {
         i--;
         if (i < 0) i = 0;
-        $('#clientInput').val($('div.client:nth-last-of-type('+i*2+')').text());
+        $('#clientInput').val(conversation[i]);
     }
 });
 

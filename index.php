@@ -67,9 +67,9 @@
             </div>
         </div>
         <div id="voice" onclick="voiceInput()"></div>
-        <input type="text" name="clientInput" id="clientInput" autofocus placeholder="Napisz wiadomość...">
-        <input type="text" name="newInfo" id="newInfo">
-        <input type="text" name="name" id="name">
+        <input type="text" name="clientInput" id="clientInput" autofocus autocomplete="off" placeholder="Napisz wiadomość...">
+        <input type="text" name="newInfo" id="newInfo" autocomplete="off" placeholder="Jak mogę odpowiedzieć na Twoje pytanie?">
+        <input type="text" name="name" id="name" autocomplete="off" placeholder="Jak masz na imię?">
         <div id="send" onclick="sendData()"></div>
     </div>
     <script src="/js/responsivevoice.js"></script>

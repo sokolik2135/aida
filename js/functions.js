@@ -37,8 +37,14 @@ function interact(input) {
             async: false
         });
         return translated;
-    } else if (input.toString().match(/^co to /ig)) {
-        return wiki(input.substr(6));
+    } else if (input.toString().match(/^co (to|znaczy)(\sjest|\sznaczy|) /ig)) {
+        var query = input.replace('?','');
+        if (query.toString().substr(0,10) == 'co to jest') query = query.substr(10);
+        else if (query.toString().substr(0,12) == 'co to znaczy') query = query.substr(12);
+        else if (query.toString().substr(0,5) == 'co to') query = query.substr(5);
+        else if (query.toString().substr(0,9) == 'co znaczy') query = query.substr(9);
+        query.trim();
+        return wiki(query);
     } else if (input.toString().match(/^aida:\/\//ig)) {     
         // ------------------------------ Aida dev messages ---------------------------------
         if (input == 'aida://author') return 'Piotr Sokołowski';
@@ -83,11 +89,26 @@ function interact(input) {
             return 'Uruchamiam ponownie...';
         };
         if (input == 'aida://clear-data' || input == 'aida://factory-reset') {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                    console.log('ServiceWorker unregistered!');
+                }
+            });
             setTimeout(function(){
                 localStorage.clear();
                 location.reload(true);
             }, 1500);
             return 'Przywracam do ustawień początkowych...';
+        }
+        if (input == 'aida://unregister') {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                    console.log('ServiceWorker unregistered!');
+                };
+            });
+            return 'Gotowe!';
         }
         if (input == 'aida://system') return checkOS();
         if (input == 'aida://version') return version;
@@ -427,6 +448,7 @@ function wiki(q) {
         },
         async: true
     });
+    if (def == '') def = 'Nie można połączyć się z Wikipedią... Spróbuj jeszcze raz';
     setTimeout(() => {
         updateChat('assistant',[def,'html']);
     }, 2500);
@@ -502,6 +524,7 @@ function updateChat(who, what) {
 
 function sendData() {
     bot.input = $('#clientInput').val();
+    conversation.splice(1, 0, bot.input);
     updateChat('client',$('#clientInput').val());
     $('#clientInput').val('');
     updateChat('assistant','');

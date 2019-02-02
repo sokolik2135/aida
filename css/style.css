@@ -238,7 +238,7 @@ code {
     height: 40px;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 80px);
     border: 0;
     border-top: 1px solid #ddd;
     padding: 0 10px;
