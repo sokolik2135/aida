@@ -512,7 +512,7 @@ function updateChat(who, what) {
         if ($(`#messages span.client:last`).text().match(/pami[e|ę]ta/ig) || $('#messages span.client:last').text().match(/^aida:\/\//ig)) {
             $(`#messages span.${who}:last`).html(what);
         } else if ($.type(what) == 'array') {
-            if (what[1] == 'html') {
+            if (what[1].toString().match(/html/ig)) {
                 $(`#messages span.${who}:last`).html(what[0]);
             } else {
                 $(`#messages span.${who}:last`).text(what[0]);
@@ -521,11 +521,17 @@ function updateChat(who, what) {
         } else {
             $(`#messages span.${who}:last`).text(what);
         }
+        if (who == 'assistant') {
+            if ($.type(what) == 'array') {
+                responsiveVoice.speak(what[0].toString().replace(/<br>/ig,' ').replace(/<[^>]+>/ig,'').replace(/(\.){1,}/ig,'.').replace(/\,html$/ig,'').replace(' - ',','),'Polish Female');
+            } else {
+                responsiveVoice.speak(what.toString().replace(/<br>/ig,' ').replace(/<[^>]+>/ig,'').replace(/(\.){1,}/ig,'.').replace(/\,html$/ig,'').replace(' - ',','),'Polish Female');
+            }
+        }
     }
     $('#messages').stop().animate({
         scrollTop: $('#messages').prop('scrollHeight')
     });
-    if (who == 'assistant' && !what.toString().match(/<[^>]+>/ig)) responsiveVoice.speak(what.toString().replace(/<br>/ig,' ').replace(/<[^>]+>/ig,'').replace(/(\.){1,}/ig,'.').replace(/\,html$/ig,'').replace(' - ',','),'Polish Female');
     $('#messages span.client:last').css({
         'color': localStorage['aida-color'],
         'background-color': localStorage['aida-bgColor'],
