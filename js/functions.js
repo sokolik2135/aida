@@ -100,6 +100,7 @@ function interact(input) {
         }
         if (input == 'aida://clear-cache') {
             caches.delete('aida');
+            sendNotification('Aida','Pamięć cache została wyczyszczona');
             return 'Pamięć cache została wyczyszczona';
         }
         if (input == 'aida://unregister') {
@@ -599,9 +600,32 @@ function shuffle(a) {
     return a;
 };
 
-$(document).ready(checkName());
+function sendNotification(title,message) {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+        console.log("This browser does not support system notifications");
+    }
+
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification(title,{body: message, icon: '/favicon.png'});
+    }
+    
+    // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== 'denied') {
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+                var notification = new Notification(title,{body: message, icon: '/favicon.png'});
+            }
+        });
+    }
+}
 
 $(document).ready(function(){
+    checkName();
+
     if (dzien().match(/^14.02/ig)) {
         updateChat('assistant',['Udanych Walentynek','kiss']);
         localStorage.setItem('old-color',localStorage['aida-color']);
