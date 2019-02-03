@@ -1,4 +1,5 @@
 function interact(input) {
+    input = input.toLowerCase();
     if (input.toString().match(/licz/ig)) {
         return licz(input.substr(input.lastIndexOf(' ')+1));
     } else if (input.toString().match(/pisz/ig)) {
@@ -47,7 +48,7 @@ function interact(input) {
         else if (query.toString().substr(0,9) == 'co znaczy') query = query.substr(9);
         query.trim();
         return wiki(query);
-    } else if (input.toString().match(/^aida:\/\//ig)) {     
+    } else if (input.toString().match(/^aida:\/\//ig)) {
         // ------------------------------ Aida dev messages ---------------------------------
         if (input == 'aida://author') return 'Piotr Sokołowski';
         if (input == 'aida://beta') {
