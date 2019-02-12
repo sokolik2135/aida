@@ -374,6 +374,11 @@ function otworzLink() {
             open('https://messenger.com/');
         },1500);
         return 'Otwieram Messengera';
+    } else if (link.toString().match(/wikipedi/ig)) {
+        setTimeout(function(){
+            open('https://pl.wikipedia.org/');
+        },1500);
+        return 'Otwieram Wikipedię';
     } else if (link.toString().match(/onedrive/ig) || link.toString().match(/łandrajw/ig)) {
         setTimeout(function(){
             open('https://onedrive.live.com/');
@@ -597,6 +602,7 @@ function saveName() {
     $('#name').val('');
     $('#clientInput').focus();
     updateChat('assistant',`Cześć ${localStorage['aida-name']}! Miło Cię poznać!`);
+    sendNotification(`Witaj ${localStorage['aida-name']}!`,'Miło Cię poznać 😊');
 };
 
 function shuffle(a) {

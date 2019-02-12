@@ -33,13 +33,12 @@
     <link rel="apple-touch-startup-image" href="favicon.png">
 </head>
 <body>
-<?php
-    $useragent = $_SERVER['HTTP_USER_AGENT'];
-    if (preg_match('/asystent-app/i',$useragent)) {
-        header('Location: /?online');
-    }
-    if (isset($_GET['online'])) {
-        ?>
+    <img src="/res/background.png" alt="" style="display:none;">
+    <?php
+        $useragent = $_SERVER['HTTP_USER_AGENT'];
+        if (preg_match('/asystent-app/i',$useragent)) header('Location: /?online');
+        if (isset($_GET['online'])) {
+    ?>
     <div id="bg"></div>
     <div id="sp">
         <div>
